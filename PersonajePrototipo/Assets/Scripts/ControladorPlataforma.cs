@@ -4,33 +4,33 @@ using UnityEngine;
 
 public class ControladorPlataforma : MonoBehaviour
 {
-    // Start is called before the first frame update
     public Rigidbody platformRB;
     public Transform[] platformPositions;
     public float plattformSpeed;
-    private int actualPosition=0;
+    private int actualPosition = 0;
     private int nextPosition = 1;
 
     public bool moveToTheNext = true;
     public float waitTime;
-    // Update is called once per frame
+
     void Update()
     {
-        MovePlatform(); 
+        MovePlatform();
     }
+
     void MovePlatform()
     {
-        if(moveToTheNext)
+        if (moveToTheNext)
         {
             StopCoroutine(WaitForMove(0));
             platformRB.MovePosition(Vector3.MoveTowards(platformRB.position, platformPositions[nextPosition].position, plattformSpeed * Time.deltaTime));
         }
-        if (Vector3.Distance(platformRB.position, platformPositions[nextPosition].position) <= 0) 
+        if (Vector3.Distance(platformRB.position, platformPositions[nextPosition].position) <= 0)
         {
             StartCoroutine(WaitForMove(waitTime));
             actualPosition = nextPosition;
             nextPosition++;
-            if(nextPosition>platformPositions.Length-1)
+            if (nextPosition > platformPositions.Length - 1)
             {
                 nextPosition = 0;
             }
@@ -43,4 +43,21 @@ public class ControladorPlataforma : MonoBehaviour
         yield return new WaitForSeconds(time);
         moveToTheNext = true;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.transform.parent = this.transform;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.transform.parent = null;
+        }
+    }
 }
+

@@ -8,8 +8,6 @@ public class Controller : MonoBehaviour
     public float verticalMove;
     private Vector3 playerInput;
 
-    //private float verticalVelocity = 0;
-    //private float verticalRotation = 0;
     public Camera mainCamera;
     private Vector3 camForward;
     private Vector3 camRight;
@@ -17,7 +15,6 @@ public class Controller : MonoBehaviour
     private Vector3 movePlayer;
     public float gravity = 9.8f;
     public float fallVelocity;
-
 
     public CharacterController characterController;
     public float playerSpeed;
@@ -37,15 +34,6 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
-        // Rotación del jugador
-        /*float rotLeftRight = Input.GetAxis("Mouse X") * mouseSensitivity;
-        transform.Rotate(0, rotLeftRight, 0);
-
-        verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-        verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);
-        Camera.main.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);*/
-
-        // Movimiento del jugador
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
 
@@ -56,7 +44,6 @@ public class Controller : MonoBehaviour
 
         camDirection();
         movePlayer = playerInput.x * camRight + playerInput.z * camForward;
-
         movePlayer = movePlayer * playerSpeed;
 
         characterController.transform.LookAt(characterController.transform.position + movePlayer);
@@ -67,6 +54,7 @@ public class Controller : MonoBehaviour
 
         Debug.Log(characterController.velocity.magnitude);
     }
+
     void camDirection()
     {
         camForward = mainCamera.transform.forward;
@@ -92,7 +80,7 @@ public class Controller : MonoBehaviour
             movePlayer.y = fallVelocity;
             playerAnimatorController.SetFloat("PlayerVerticalVelocity", characterController.velocity.y);
         }
-        playerAnimatorController.SetBool("IsGrounded",characterController.isGrounded);
+        playerAnimatorController.SetBool("IsGrounded", characterController.isGrounded);
         SlideDown();
     }
 
@@ -103,35 +91,39 @@ public class Controller : MonoBehaviour
             fallVelocity = JumpForce;
             movePlayer.y = fallVelocity;
             playerAnimatorController.SetTrigger("SaltoPlayer");
-
         }
         SlideDown();
     }
 
     public void SlideDown()
-     {
+    {
         isOnSlope = Vector3.Angle(Vector3.up, hitNormal) >= characterController.slopeLimit;
         if (isOnSlope)
         {
-            movePlayer.x += ((1f-hitNormal.y)*hitNormal.x) * slideVelocity;
-            movePlayer.z += ((1f-hitNormal.y)*hitNormal.z) * slideVelocity;
-
+            movePlayer.x += ((1f - hitNormal.y) * hitNormal.x) * slideVelocity;
+            movePlayer.z += ((1f - hitNormal.y) * hitNormal.z) * slideVelocity;
             movePlayer.y += slopeForceDown;
         }
-
     }
-
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        hitNormal = hit.normal; 
+        hitNormal = hit.normal;
     }
 
-    private void OnAnimatorMove()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Platform"))
+        {
+            transform.parent = other.transform;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Platform"))
+        {
+            transform.parent = null;
+        }
     }
 }
-
-
-
