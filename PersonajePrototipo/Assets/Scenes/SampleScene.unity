@@ -3155,7 +3155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385570846}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.031901527, y: 0.92504305, z: -0.37002325, w: 0.07975253}
+  m_LocalRotation: {x: 0.03190153, y: 0.92504305, z: -0.37002325, w: 0.07975253}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7392,6 +7392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 826693982}
+  - component: {fileID: 826693983}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -7415,6 +7416,23 @@ Transform:
   - {fileID: 1696790838}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &826693983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826693981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1175cd8b7ed29164b85e04e517b094ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: 100
+  invencible: 0
+  tiempo_invencible: 1
+  Tiempo_frenado: 0.2
+  Tiempo_Muerto: 3
 --- !u!1001 &830535390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8030,20 +8048,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 889d0784b7244d54296cfb26db5d071c, type: 2}
     - target: {fileID: 5424481471718271698, guid: f681903f73da7714f98fbd9bf84bc9a2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5143231
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424481471718271698, guid: f681903f73da7714f98fbd9bf84bc9a2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.48987594
+      value: 0.40760615
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424481471718271698, guid: f681903f73da7714f98fbd9bf84bc9a2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.49364474
       objectReference: {fileID: 0}
     - target: {fileID: 5424481471718271698, guid: f681903f73da7714f98fbd9bf84bc9a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.0380116
+      value: 118.41
       objectReference: {fileID: 0}
     - target: {fileID: 5424481471718271698, guid: f681903f73da7714f98fbd9bf84bc9a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.789612
+      value: 11.07
       objectReference: {fileID: 0}
     - target: {fileID: 5424481471718271698, guid: f681903f73da7714f98fbd9bf84bc9a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.948645
+      value: -15.28
       objectReference: {fileID: 0}
     - target: {fileID: 5424481471718271698, guid: f681903f73da7714f98fbd9bf84bc9a2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9847,15 +9873,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 29073b202042f5b479565afa503a3ed9, type: 2}
     - target: {fileID: 5424481471718271698, guid: f681903f73da7714f98fbd9bf84bc9a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.854663
+      value: 116.7
       objectReference: {fileID: 0}
     - target: {fileID: 5424481471718271698, guid: f681903f73da7714f98fbd9bf84bc9a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.4593334
+      value: 11.19
       objectReference: {fileID: 0}
     - target: {fileID: 5424481471718271698, guid: f681903f73da7714f98fbd9bf84bc9a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.626548
+      value: -15.94
       objectReference: {fileID: 0}
     - target: {fileID: 5424481471718271698, guid: f681903f73da7714f98fbd9bf84bc9a2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13794,7 +13820,7 @@ MonoBehaviour:
   horizontalMove: 0
   verticalMove: 0
   mainCamera: {fileID: 963194227}
-  JumpForce: 8
+  JumpForce: 12
   gravity: 40
   fallVelocity: 0
   characterController: {fileID: 0}
@@ -14142,6 +14168,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b516754b7f00ab54da14c6f9cb9f35c5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1784798603}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b516754b7f00ab54da14c6f9cb9f35c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1784798605}
   m_SourcePrefab: {fileID: 100100000, guid: b516754b7f00ab54da14c6f9cb9f35c5, type: 3}
 --- !u!1 &1696790833
 GameObject:
@@ -14158,6 +14187,7 @@ GameObject:
   - component: {fileID: 1696790834}
   - component: {fileID: 1696790839}
   - component: {fileID: 1696790840}
+  - component: {fileID: 1696790841}
   m_Layer: 0
   m_Name: Personaje
   m_TagString: Untagged
@@ -14180,7 +14210,7 @@ MonoBehaviour:
   horizontalMove: 0
   verticalMove: 0
   mainCamera: {fileID: 963194227}
-  JumpForce: 10
+  JumpForce: 5
   gravity: 9.8
   fallVelocity: 0
   characterController: {fileID: 0}
@@ -14313,6 +14343,23 @@ MonoBehaviour:
   lastgroundName: 
   originOffset: {x: 0, y: 0, z: 0}
   factorDivision: 4.2
+--- !u!114 &1696790841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696790833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1175cd8b7ed29164b85e04e517b094ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: 100
+  invencible: 0
+  tiempo_invencible: 1
+  Tiempo_frenado: 0.2
+  Tiempo_Muerto: 3
 --- !u!1001 &1698900927
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15335,6 +15382,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cantidad: 20
+--- !u!114 &1784798605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784798600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1175cd8b7ed29164b85e04e517b094ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: 100
+  invencible: 0
+  tiempo_invencible: 1
+  Tiempo_frenado: 0.2
+  Tiempo_Muerto: 3
 --- !u!1001 &1794702628
 PrefabInstance:
   m_ObjectHideFlags: 0
